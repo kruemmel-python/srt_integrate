@@ -5,7 +5,7 @@ import math
 client = OpenAI()
 
 # Laden Sie die Audiodatei
-audio = AudioSegment.from_file("1220.mp3")
+audio = AudioSegment.from_file("VerbundeneSeelen.mp4")
 
 # Definieren Sie die maximale Länge eines Segments in Millisekunden (z.B. 2 Minuten)
 max_segment_length = 2 * 60 * 1000  # 2 Minuten in Millisekunden
@@ -45,9 +45,24 @@ for i in range(num_segments):
     import os
     os.remove(segment_file_path)
 
-# Drucken Sie die Transkriptionstexte mit bereinigten Zeitstempeln
-for segment in transcriptions:
+# Funktion zum Formatieren der Zeit im SRT-Format
+def format_time(seconds):
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    seconds = seconds % 60
+    milliseconds = int((seconds % 1) * 1000)
+    return f"{hours:02}:{minutes:02}:{int(seconds):02},{milliseconds:03}"
+
+# Erstellen Sie die SRT-Datei
+srt_content = ""
+for i, segment in enumerate(transcriptions, start=1):
     start_time = segment.start
     end_time = segment.end
     text = segment.text
-    print(f"[{start_time}s - {end_time}s]: {text}")
+    srt_content += f"{i}\n"
+    srt_content += f"{format_time(start_time)} --> {format_time(end_time)}\n"
+    srt_content += f"{text}\n\n"
+
+# Speichern Sie die SRT-Datei
+with open("subtitles.srt", "w") as srt_file:
+    srt_file.write(srt_content)
