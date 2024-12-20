@@ -1,6 +1,6 @@
 
 
-```
+```markdown
 # Audio Transcription und Video Untertitel Integration
 
 Dieses Repository enthält mehrere Python-Skripte, die Funktionen zur Transkription von Audiodateien und zum Hinzufügen von Untertiteln zu Videos integrieren.
@@ -74,15 +74,10 @@ python videosrt.py
 
 Es wird ein neues Video mit dem Namen `output_video_with_subtitles.mp4` erstellt, das die Untertitel enthält.
 
-## Lizenz
+## YouTube Video
 
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Siehe die [LICENSE](LICENSE)-Datei für weitere Informationen.
+Schau dir das Ergebnisvideo hier an:  
+[**Video mit Untertiteln**](https://youtu.be/f2GhISWc94M?si=zvF5hoi5P5knib2G)
 
-```
 
-### Erklärung:
-
-- **wisper.py**: Nutzt das `whisper`-Modell zur Transkription von Audiodateien. Die Datei wird aufgeteilt und jedes Segment transkribiert.
-- **srt.py**: Konvertiert diese Transkriptionen mit Zeitstempeln in das **SRT-Format**.
-- **videosrt.py**: Fügt die generierten SRT-Untertitel zu einem Video hinzu und speichert ein neues Video.
 
